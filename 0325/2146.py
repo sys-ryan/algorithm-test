@@ -1,10 +1,7 @@
-# 미완성 - 수정 필요 
-
 from collections import deque
 
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]
-
 
 n = int(input())
 a = [list(map(int, input().split())) for _ in range(n)]
@@ -24,8 +21,8 @@ def assign_group(x, y, group_number):
       nx, ny = x+dx[k], y+dy[k]
       if 0 <= nx < n and 0 <= ny < n:
         if a[nx][ny] == 1 and group[nx][ny] == 0:
-          group[nx][ny] = group[x][y]
-          dist[x][y] = 0
+          group[nx][ny] = group_number
+          dist[nx][ny] = 0
           q.append((nx, ny))
           
 group_number = 0
@@ -56,7 +53,6 @@ def calc_dist():
 
 calc_dist()
 
-
 def get_shortest_path():
   min_dist = -1
   for i in range(n):
@@ -68,15 +64,7 @@ def get_shortest_path():
           if group[i][j] != group[nx][ny]:
             if min_dist == -1 or min_dist > dist[i][j] + dist[nx][ny]:
               min_dist = dist[i][j] + dist[nx][ny]
-              print(min_dist)
 
   return min_dist
 
 print(get_shortest_path())
-
-
-
-for el in dist:
-  print(el)
-
-
