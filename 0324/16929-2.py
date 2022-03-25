@@ -26,8 +26,8 @@ def dfs(x, y, color, count):
 for i in range(n):
   for j in range(m):
     if dist[i][j] == -1:
-      if dfs(i, j, a[i][j], 0):
-        print("YES")
+      if dfs(i, j, a[i][j], 0): 
+        print("Yes")
         sys.exit()
 
-print("NO")
+print("No")

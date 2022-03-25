@@ -27,7 +27,7 @@ for i in range(n):
   for j in range(m):
     if check[i][j] == False:
       if dfs(i, j, a[i][j], 0):
-        print("YES")
+        print("Yes")
         exit()
 
-print("NO")
+print("No")
