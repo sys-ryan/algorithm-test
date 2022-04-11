@@ -1,3 +1,4 @@
+
 def flip(x):
   if x == 'H':
     return 'T'
