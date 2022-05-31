@@ -2,7 +2,7 @@ from collections import deque
 import sys
 MAX = 2000001
 
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(MAX)
 
 check = [False] * MAX
 dist = [-1] * MAX
@@ -43,4 +43,14 @@ def go(n, m):
     go(n, via[m])
   print(m, end=' ')
 
-go(n, m)
+# go(n, m)
+
+stack = []
+i = m
+while i != n:
+  stack.append(i)
+  i = via[i]
+stack.append(n)
+
+while stack:
+  print(stack.pop(), end=' ')
