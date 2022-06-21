@@ -20,6 +20,7 @@ def calc(a, index, cur, plus, minus, mul, div):
     else:
       res.append(calc(a, index+1, -(-cur//a[index]), plus, minus, mul, div-1))
   
+  
   ans = (
     max([t[0] for t in res]),
     min([t[1] for t in res])
