@@ -10,7 +10,7 @@ for i in range(n):
     continue
 
   if d[i] < d[i-1] + a[i]:
-    a[i] = d[i-1] + a[i]
+    d[i] = d[i-1] + a[i]
 
 for i in range(n-1, -1, -1):
   dr[i] = a[i]
