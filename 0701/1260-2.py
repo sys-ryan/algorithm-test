@@ -1,15 +1,11 @@
 from collections import deque
 
 n, m, start = map(int, input().split())
-g = [[] for _ in range(n+1)]
+a = [[False] * (n+1) for _ in range(n+1)]
 
 for _ in range(m):
   u, v = map(int, input().split())
-  g[u].append(v)
-  g[v].append(u)
-
-for i in range(n+1):
-  g[i].sort()
+  a[u][v] = a[v][u] = True
 
 check = [False] * (n+1)
 dfs_result = []
@@ -20,33 +16,28 @@ def dfs(start):
   check[start] = True
   dfs_result.append(start)
 
-  for nxt in g[start]:
-    if not check[nxt]:
-      dfs(nxt)
+  for i in range(1, n+1):
+    if a[start][i] and not check[i]:
+      dfs(i)
 
 def bfs(start):
   check = [False] * (n+1)
-  q = deque()
-  check[start] = True
-  q.append(start)
-  
   bfs_result.append(start)
+
+  q = deque()
+  q.append(start)
+  check[start] = True
 
   while q:
     x = q.popleft()
 
-    for nxt in g[x]:
-      if not check[nxt]:
-        check[nxt] = True
-        bfs_result.append(nxt)
-        q.append(nxt)
-
+    for i in range(1, n+1):
+      if a[x][i] and not check[i]:
+        q.append(i)
+        check[i] = True
+        bfs_result.append(i)
 
 dfs(start)
-bfs(start)
-
 print(' '.join(map(str, dfs_result)))
+bfs(start)
 print(' '.join(map(str, bfs_result)))
-
-
-
